@@ -3,7 +3,7 @@
 이 포트폴리오 사이트는 Vercel에서 제공하는 템플릿(v0)을 기반으로 제작되었으며,  
 백엔드 및 AI 개발자로서의 프로젝트와 이력을 소개하기 위한 목적으로 구성되었습니다.
 
-🔗 **라이브 사이트**: [https://portfolio-site-mminzy22.vercel.app](https://portfolio-site-mminzy22.vercel.app)  
+🔗 **Portfolio Site**: [https://portfolio-site-eight-zeta.vercel.app/](https://portfolio-site-eight-zeta.vercel.app/)  
 📘 **기술 블로그**: [https://mminzy22.github.io](https://mminzy22.github.io/)
 
 ## 📌 주요 구성
