@@ -21,6 +21,13 @@ interface Project {
       }
   image: string
   gallery: string[]
+  projectInfo: {
+    type: string
+    period: string
+    role: string
+    githubUrl?: string
+    demoUrl?: string
+  }
 }
 
 // 프로젝트 데이터 (실제로는 데이터베이스나 API에서 가져올 수 있습니다)
@@ -46,6 +53,13 @@ const projects: Project[] = [
       "/images/projects/project1/ainfo_pay.gif?height=400&width=600",
       "/images/projects/project1/ainfo_s.gif?height=400&width=600",
     ],
+    projectInfo: {
+      type: "AI & 백엔드",
+      period: "2025.02 - 진행 중",
+      role: "초기 회원관련 기능, 배포, CrewAI 멀티에이전트 시스템 설계 및 구현",
+      githubUrl: "https://github.com/Mminzy22/AInfo-Backend",
+      demoUrl: "https://www.youtube.com/watch?v=Y2IPx5YfEuc&ab_channel=ainfo",
+    },
   },
   {
     id: 2,
@@ -67,6 +81,13 @@ const projects: Project[] = [
       "/images/projects/project2/모의면접_채팅내역1.png?height=400&width=600",
       "/images/projects/project2/모의면접_채팅내역2.png?height=400&width=600",
     ],
+    projectInfo: {
+      type: "AI & 백엔드",
+      period: "2025.02 - 2025.02",
+      role: "RDB 설계 및 구현",
+      githubUrl: "https://github.com/Mminzy22/Chatbot_pjt",
+      demoUrl: "https://www.youtube.com/watch?v=Vx48Bgsf3qQ&ab_channel=shincc6500",
+    },
   },
   {
     id: 3,
@@ -90,6 +111,13 @@ const projects: Project[] = [
       "/placeholder.svg?height=400&width=600",
       "/placeholder.svg?height=400&width=600",
     ],
+    projectInfo: {
+      type: "백엔드",
+      period: "2023.10 - 2023.11",
+      role: "백엔드 아키텍처 설계 및 구현",
+      githubUrl: "https://github.com/Mminzy22/moviemoa",
+      // demoUrl: "https://demo.cloud-backend.com",
+    },
   },
 ]
 
@@ -198,26 +226,34 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
                 <dl className="space-y-4">
                   <div>
                     <dt className="text-sm font-medium text-gray-500 dark:text-gray-400">프로젝트 유형</dt>
-                    <dd className="mt-1 text-sm text-gray-900 dark:text-gray-100">백엔드 & AI</dd>
+                    <dd className="mt-1 text-sm text-gray-900 dark:text-gray-100">{project.projectInfo.type}</dd>
                   </div>
                   <div>
                     <dt className="text-sm font-medium text-gray-500 dark:text-gray-400">기간</dt>
-                    <dd className="mt-1 text-sm text-gray-900 dark:text-gray-100">2025.02 - 2025.03</dd>
+                    <dd className="mt-1 text-sm text-gray-900 dark:text-gray-100">{project.projectInfo.period}</dd>
                   </div>
                   <div>
                     <dt className="text-sm font-medium text-gray-500 dark:text-gray-400">역할</dt>
-                    <dd className="mt-1 text-sm text-gray-900 dark:text-gray-100">백엔드 개발 및 AI 모델 구현</dd>
+                    <dd className="mt-1 text-sm text-gray-900 dark:text-gray-100">{project.projectInfo.role}</dd>
                   </div>
                 </dl>
               </div>
 
               <div className="space-y-4">
-                <Button className="w-full" variant="default">
-                  데모 보기
-                </Button>
-                <Button className="w-full" variant="outline">
-                  GitHub 저장소
-                </Button>
+                {project.projectInfo.demoUrl && (
+                  <Button className="w-full" variant="default" asChild>
+                    <Link href={project.projectInfo.demoUrl} target="_blank" rel="noopener noreferrer">
+                      데모 보기
+                    </Link>
+                  </Button>
+                )}
+                {project.projectInfo.githubUrl && (
+                  <Button className="w-full" variant="outline" asChild>
+                    <Link href={project.projectInfo.githubUrl} target="_blank" rel="noopener noreferrer">
+                      GitHub 저장소
+                    </Link>
+                  </Button>
+                )}
               </div>
             </div>
           </div>
