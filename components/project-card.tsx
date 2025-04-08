@@ -1,7 +1,7 @@
 import Link from "next/link"
-import Image from "next/image"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import ProjectImage from "@/components/project-image"
 
 interface Project {
   id: number
@@ -20,7 +20,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
   return (
     <Card className="overflow-hidden transition-all hover:shadow-lg dark:bg-gray-850 h-full flex flex-col">
       <div className="relative h-48 w-full">
-        <Image src={project.image || "/placeholder.svg"} alt={project.title} fill className="object-cover" />
+        <ProjectImage src={project.image || "/placeholder.svg?height=300&width=500"} alt={project.title} />
       </div>
       <CardHeader>
         <CardTitle>{project.title}</CardTitle>
@@ -28,7 +28,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       <CardContent className="flex-grow">
         <p className="text-gray-500 dark:text-gray-400 mb-4">{project.description}</p>
         <div className="flex flex-wrap gap-2">
-          {project.technologies.map((tech) => (
+          {project.technologies.slice(0, 5).map((tech) => (
             <Badge
               key={tech}
               variant="secondary"
@@ -37,6 +37,11 @@ export default function ProjectCard({ project }: ProjectCardProps) {
               {tech}
             </Badge>
           ))}
+          {project.technologies.length > 5 && (
+            <Badge variant="outline" className="bg-transparent">
+              +{project.technologies.length - 5}
+            </Badge>
+          )}
         </div>
       </CardContent>
       <CardFooter>
@@ -49,4 +54,3 @@ export default function ProjectCard({ project }: ProjectCardProps) {
     </Card>
   )
 }
-

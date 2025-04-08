@@ -3,34 +3,10 @@ import { Github, Mail, Globe } from "lucide-react"
 import ProjectCard from "@/components/project-card"
 import SkillBadge from "@/components/skill-badge"
 import { Button } from "@/components/ui/button"
+import { getProjectsForHomepage } from "@/data/projects"
 
 export default function Home() {
-  const projects = [
-    {
-      id: 1,
-      title: "AInfo",
-      description: "개인 맞춤형 공공서비스 추천 AI 챗봇",
-      technologies: ["Python", "Django", "DRF", "PostgreSQL", "ChromaDB", "Django Channels", "Redis", "Celery", "LangChain", "CrewAI"],
-      image: "/images/projects/project1/ainfo_index.png?height=300&width=500",
-      link: "/projects/ainfo",
-    },
-    {
-      id: 2,
-      title: "개발자 모의 기술 면접 AI 챗봇",
-      description: "개발자를 대상으로 기술 면접을 시뮬레이션하는 AI 챗봇",
-      technologies: ["Python", "Streamlit", "Pinecone", "PostgreSQL", "LangChain", "LangGraph"],
-      image: "/images/projects/project2/모의면접_챗봇.png?height=300&width=500",
-      link: "/projects/technical-interview",
-    },
-    {
-      id: 3,
-      title: "MovieMoa",
-      description: "영화 커뮤니티 웹사이트",
-      technologies: ["Java", "Spring Boot","Spring Security", "Oracle DB", "MyBatis"],
-      image: "/placeholder.svg?height=300&width=500",
-      link: "/projects/movimoa",
-    },
-  ]
+  const projects = getProjectsForHomepage()
 
   const skills = [
     { name: "Python", category: "Language" },
@@ -112,7 +88,12 @@ export default function Home() {
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl dark:text-white">소개</h2>
               <div className="space-y-2 mx-auto max-w-[700px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
                 <p>안녕하세요, 백엔드와 AI 개발을 중심으로 성장 중인 개발자 박민지입니다.</p>
-                <p>Django 기반 웹 서비스, CrewAI 멀티에이전트 챗봇, AWS 인프라 배포, CI/CD 자동화 등 다양한 기술을 직접 구현하며 실무 중심의 개발 역량을 키워왔습니다. 단순히 작동하는 기능을 넘어서, 유지보수성과 확장성까지 고려한 설계를 지향하고 있으며, 협업과 문서화, 커뮤니케이션에도 진심을 다하는 개발자가 되기 위해 끊임없이 노력하고 있습니다.</p>
+                <p>
+                  Django 기반 웹 서비스, CrewAI 멀티에이전트 챗봇, AWS 인프라 배포, CI/CD 자동화 등 다양한 기술을 직접
+                  구현하며 실무 중심의 개발 역량을 키워왔습니다. 단순히 작동하는 기능을 넘어서, 유지보수성과 확장성까지
+                  고려한 설계를 지향하고 있으며, 협업과 문서화, 커뮤니케이션에도 진심을 다하는 개발자가 되기 위해
+                  끊임없이 노력하고 있습니다.
+                </p>
               </div>
             </div>
           </div>
@@ -213,4 +194,3 @@ export default function Home() {
     </main>
   )
 }
-

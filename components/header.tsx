@@ -1,16 +1,19 @@
 "use client"
 
+import type React from "react"
+
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { ModeToggle } from "@/components/mode-toggle"
-import { usePathname } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const pathname = usePathname()
+  const router = useRouter()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,8 +24,47 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  // 페이지 변경 시 모바일 메뉴 닫기
+  useEffect(() => {
+    setIsMenuOpen(false)
+  }, [pathname])
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
+  }
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault()
+
+    // 모바일 메뉴가 열려있으면 닫기
+    if (isMenuOpen) {
+      setIsMenuOpen(false)
+    }
+
+    // 현재 경로 확인
+    const currentPath = pathname
+
+    // 해시 링크인 경우 스크롤 처리
+    if (href.startsWith("/#") && currentPath === "/") {
+      // 현재 홈페이지에 있고 해시 링크인 경우
+      const targetId = href.substring(2)
+      const element = document.getElementById(targetId)
+      if (element) {
+        window.scrollTo({
+          top: element.offsetTop - 80, // 헤더 높이를 고려하여 약간 위로 스크롤
+          behavior: "smooth",
+        })
+      }
+    } else if (href === "/" && currentPath === "/") {
+      // 홈에서 홈으로 이동 (최상단으로 스크롤)
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      })
+    } else {
+      // 다른 페이지로 이동
+      router.push(href)
+    }
   }
 
   const navItems = [
@@ -56,6 +98,7 @@ export default function Header() {
                 className={`text-sm font-medium transition-colors hover:text-gray-900 dark:hover:text-gray-100 ${
                   pathname === item.href ? "text-gray-900 dark:text-white" : "text-gray-500 dark:text-gray-400"
                 }`}
+                onClick={(e) => handleNavClick(e, item.href)}
               >
                 {item.name}
               </Link>
@@ -93,17 +136,17 @@ export default function Header() {
                   key={item.name}
                   href={item.href}
                   className="text-lg font-medium transition-colors hover:text-gray-900 dark:hover:text-gray-100"
-                  onClick={toggleMenu}
+                  onClick={(e) => handleNavClick(e, item.href)}
                 >
                   {item.name}
                 </Link>
               ))}
-              {/* 블로그 링크 추가 (필요한 경우) */}
-              {/* 예: 모바일 메뉴에 블로그 링크 추가 */}
               <Link
-                href="/blog" // Replace with your actual blog URL
+                href="https://mminzy22.github.io/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-lg font-medium transition-colors hover:text-gray-900 dark:hover:text-gray-100"
-                onClick={toggleMenu}
+                onClick={() => setIsMenuOpen(false)}
               >
                 Blog
               </Link>
@@ -114,4 +157,3 @@ export default function Header() {
     </header>
   )
 }
-

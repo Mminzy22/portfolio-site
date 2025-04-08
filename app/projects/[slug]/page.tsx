@@ -1,15 +1,19 @@
 import { notFound } from "next/navigation"
-import Image from "next/image"
 import Link from "next/link"
 import { ArrowLeft, Calendar } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { getProjectBySlug } from '@/data/projects'
+import { getProjectBySlug } from "@/data/projects"
+import MarkdownContent from "@/components/markdown-content"
+import ProjectImage from "@/components/project-image"
+import Image from "next/image"
 
-export default function Project({ params }: { params: { slug: string } }) {
-  const project = getProjectBySlug(params.slug)
+export default async function Project({ params }: { params: { slug: string } }) {
+  // Next.js 15.2.4에서는 params를 사용하기 전에 await 해야 합니다
+  const slug = await params.slug
+  const project = getProjectBySlug(slug)
 
   if (!project) {
     notFound()
@@ -29,7 +33,7 @@ export default function Project({ params }: { params: { slug: string } }) {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2 space-y-8">
             <div className="relative aspect-video overflow-hidden rounded-lg">
-              <Image src={project.image || "/placeholder.svg"} alt={project.title} fill className="object-cover" />
+              <ProjectImage src={project.image || "/placeholder.svg?height=400&width=600"} alt={project.title} />
             </div>
 
             <Tabs defaultValue="overview" className="w-full">
@@ -67,11 +71,10 @@ export default function Project({ params }: { params: { slug: string } }) {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {project.gallery.map((image, index) => (
                       <div key={index} className="relative aspect-video overflow-hidden rounded-lg">
-                        <Image
-                          src={image || "/placeholder.svg"}
+                        <ProjectImage
+                          src={image || "/placeholder.svg?height=400&width=600"}
                           alt={`${project.title} 이미지 ${index + 1}`}
-                          fill
-                          className="object-cover"
+                          fill={true}
                         />
                       </div>
                     ))}
@@ -145,39 +148,41 @@ export default function Project({ params }: { params: { slug: string } }) {
                           </div>
                         </CardHeader>
                         <CardContent className="pt-4">
-                          <div className="prose dark:prose-invert max-w-none">
-                            <p className="whitespace-pre-line">{item.content}</p>
+                          {/* 마크다운 컴포넌트로 content 렌더링 */}
+                          <MarkdownContent content={item.content} />
 
-                            {item.codeBlock && (
-                              <div className="mt-4 bg-gray-900 text-gray-100 p-4 rounded-md overflow-x-auto">
-                                <pre className="text-sm">
-                                  <code>{item.codeBlock}</code>
-                                </pre>
-                              </div>
-                            )}
+                          {/* 기존 코드 블록, 이미지, 비디오 지원 (하위 호환성) */}
+                          {item.codeBlock && !item.content.includes("```") && (
+                            <div className="mt-4 bg-gray-900 text-gray-100 p-4 rounded-md overflow-x-auto">
+                              <pre className="text-sm">
+                                <code>{item.codeBlock}</code>
+                              </pre>
+                            </div>
+                          )}
 
-                            {item.image && (
-                              <div className="mt-4">
-                                <div className="relative aspect-video w-full overflow-hidden rounded-lg">
-                                  <Image
-                                    src={item.image || "/placeholder.svg"}
-                                    alt={`${item.title} 이미지`}
-                                    fill
-                                    className="object-cover"
-                                  />
-                                </div>
+                          {item.image && !item.content.includes("![") && (
+                            <div className="mt-4">
+                              <div className="w-full rounded-lg overflow-hidden">
+                                <Image
+                                  src={item.image || "/placeholder.svg?height=400&width=600"}
+                                  alt={`${item.title} 이미지`}
+                                  width={800}
+                                  height={0}
+                                  style={{ width: "100%", height: "auto" }}
+                                  className="rounded-lg"
+                                />
                               </div>
-                            )}
+                            </div>
+                          )}
 
-                            {item.video && (
-                              <div className="mt-4">
-                                <video controls className="w-full rounded-lg" poster={item.image}>
-                                  <source src={item.video} type="video/mp4" />
-                                  브라우저가 비디오 태그를 지원하지 않습니다.
-                                </video>
-                              </div>
-                            )}
-                          </div>
+                          {item.video && !item.content.includes("<video") && (
+                            <div className="mt-4">
+                              <video controls className="w-full rounded-lg" poster={item.image}>
+                                <source src={item.video} type="video/mp4" />
+                                브라우저가 비디오 태그를 지원하지 않습니다.
+                              </video>
+                            </div>
+                          )}
                         </CardContent>
                       </Card>
                     ))}
@@ -238,4 +243,3 @@ export default function Project({ params }: { params: { slug: string } }) {
     </main>
   )
 }
-
