@@ -65,7 +65,7 @@ export default function Home() {
                   <span className="sr-only">Blog</span>
                 </Button>
               </Link>
-              <Link href="mailto:aw7022@gmail.com">
+              <Link href="mailto:minji.dev22@gmail.com">
                 <Button
                   variant="outline"
                   size="icon"
@@ -162,7 +162,7 @@ export default function Home() {
             <div className="w-full max-w-sm space-y-4 mt-8">
               <div className="flex items-center justify-center space-x-4">
                 <Mail className="h-6 w-6 text-gray-500 dark:text-gray-400" />
-                <p className="text-gray-500 dark:text-gray-400">aw7022@gmail.com</p>
+                <p className="text-gray-500 dark:text-gray-400">minji.dev22@gmail.com</p>
               </div>
               <div className="flex justify-center space-x-4">
                 <Link href="https://github.com/Mminzy22" target="_blank" rel="noopener noreferrer">
