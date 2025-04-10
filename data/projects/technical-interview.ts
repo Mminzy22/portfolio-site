@@ -24,7 +24,7 @@ const project: Project = {
     type: "AI & 백엔드",
     period: "2025.02 - 2025.02",
     role: "RDB 설계 및 구현",
-    githubUrl: "https://github.com/Mminzy22/Chatbot_pjt",
+    githubUrl: "https://github.com/Mminzy22/DevPilot-Backend",
     demoUrl: "https://www.youtube.com/watch?v=Vx48Bgsf3qQ&ab_channel=shincc6500",
   },
   troubleshooting: [],
