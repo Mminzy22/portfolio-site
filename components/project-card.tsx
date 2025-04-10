@@ -28,7 +28,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       <CardContent className="flex-grow">
         <p className="text-gray-500 dark:text-gray-400 mb-4">{project.description}</p>
         <div className="flex flex-wrap gap-2">
-          {project.technologies.slice(0, 5).map((tech) => (
+          {project.technologies.map((tech) => (
             <Badge
               key={tech}
               variant="secondary"
@@ -37,11 +37,6 @@ export default function ProjectCard({ project }: ProjectCardProps) {
               {tech}
             </Badge>
           ))}
-          {project.technologies.length > 5 && (
-            <Badge variant="outline" className="bg-transparent">
-              +{project.technologies.length - 5}
-            </Badge>
-          )}
         </div>
       </CardContent>
       <CardFooter>

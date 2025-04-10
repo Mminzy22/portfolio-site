@@ -7,6 +7,11 @@ import { getProjectsForHomepage } from "@/data/projects"
 
 export default function Home() {
   const projects = getProjectsForHomepage()
+  // 프로젝트 개수에 따라 그리드 클래스 동적 결정
+  const gridClass =
+    projects.length <= 2
+      ? "grid grid-cols-1 md:grid-cols-2 gap-8 mt-12 max-w-4xl mx-auto"
+      : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12 max-w-6xl mx-auto"
 
   const skills = [
     { name: "Python", category: "Language" },
@@ -111,7 +116,7 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+          <div className={gridClass}>
             {projects.map((project) => (
               <ProjectCard key={project.id} project={project} />
             ))}

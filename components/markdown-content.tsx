@@ -65,21 +65,19 @@ export default function MarkdownContent({ content }: MarkdownContentProps) {
               </code>
             )
           },
-          // 이미지 처리 - 가로만 고정하고 세로는 비율에 맞게 조정
+          // 이미지 처리 - 인라인 요소로 변경
           img({ node, ...props }) {
             return (
-              <div className="w-full my-4 rounded-lg overflow-hidden">
-                <div className="relative w-full">
-                  <Image
-                    src={props.src || "/placeholder.svg?height=400&width=600"}
-                    alt={props.alt || ""}
-                    width={800}
-                    height={0}
-                    style={{ width: "100%", height: "auto" }}
-                    className="rounded-lg"
-                  />
-                </div>
-              </div>
+              <span className="block my-4">
+                <Image
+                  src={props.src || "/placeholder.svg?height=400&width=600"}
+                  alt={props.alt || ""}
+                  width={800}
+                  height={0}
+                  style={{ width: "100%", height: "auto" }}
+                  className="rounded-lg"
+                />
+              </span>
             )
           },
           // 비디오 처리

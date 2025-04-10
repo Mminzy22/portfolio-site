@@ -21,11 +21,11 @@ const project: Project = {
   ],
   features: {
     user: [
-      "JWT 기반 로그인/회원가입",
-      "이메일 인증 및 비밀번호 재설정",
-      "소셜 로그인 (Google, Kakao)",
-      "프로필 조회 및 수정",
-      "회원 탈퇴",
+      "JWT 기반 로그인/회원가입[blog:https://mminzy22.github.io/posts/Project07/]",
+      "이메일 인증 및 비밀번호 재설정[blog:https://mminzy22.github.io/posts/Project07/]",
+      "소셜 로그인 (Google, Kakao)[blog:https://mminzy22.github.io/posts/Project07/]",
+      "프로필 조회 및 수정[blog:https://mminzy22.github.io/posts/Project07/]",
+      "회원 탈퇴[blog:https://mminzy22.github.io/posts/Project07/]",
     ],
     chatbot: [
       "LangChain + ChromaDB 기반 RAG 모델 연동",
@@ -34,7 +34,7 @@ const project: Project = {
       "대화 기록 저장 및 조회 기능",
       "대화 흐름 기억",
       "부족한 정보 → 웹검색",
-      "보고서 작성",
+      "보고서 작성[blog:https://mminzy22.github.io/posts/Project17/]",
     ],
     "공공 데이터 연동": [
       "정부 API(고용24, 정부24, 온통청년) 활용",
