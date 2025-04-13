@@ -9,7 +9,7 @@ const project: Project = {
     "AI 기반 대화형 챗봇을 개발하는 프로젝트입니다. LangChain과 Pinecone을 활용한 RAG(Retrieval-Augmented Generation) 모델을 기반으로, 주어진 문서를 참고하여 면접 질문을 생성하고 답변을 평가하는 기능을 제공합니다.",
   technologies: ["Python", "Streamlit", "Pinecone", "PostgreSQL", "LangChain", "LangGraph"],
   features: [
-    "Pinecone에 저장된 문서를 바탕으로 적절한 면접 질문을 생성",
+    "Pinecone에 저장된 문서를 바탕으로 적절한 면접 질문을 생성[blog:https://mminzy22.github.io/posts/Project04/]",
     "사용자가 입력한 답변을 RAG 기반으로 평가",
     "사용자별 채팅 세션을 생성하고 데이터베이스에 저장",
     "PostgreSQL을 활용하여 채팅 내역 조회 가능",
