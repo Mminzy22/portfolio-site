@@ -48,7 +48,7 @@ export default function Home() {
         <div className="container px-4 md:px-6 mx-auto">
           <div className="flex flex-col items-center text-center space-y-4">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter">박민지</h1>
-            <p className="text-xl md:text-2xl text-gray-300 max-w-[700px]">백엔드 개발자 & AI 엔지니어</p>
+            <p className="text-xl md:text-2xl text-gray-300 max-w-[700px]">백엔드 & DevOps/인프라 엔지니어 | AI 응용</p>
             <div className="flex items-center space-x-4 mt-6">
               <Link href="https://github.com/Mminzy22" target="_blank" rel="noopener noreferrer">
                 <Button
