@@ -92,12 +92,15 @@ export default function Home() {
             <div className="space-y-2">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl dark:text-white">소개</h2>
               <div className="space-y-2 mx-auto max-w-[700px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
-                <p>안녕하세요, 백엔드와 AI 개발을 중심으로 성장 중인 개발자 박민지입니다.</p>
+                <p>안녕하세요, 백엔드와 클라우드 운영을 한 흐름으로 설계·구현하는 박민지입니다. </p>
                 <p>
-                  Django 기반 웹 서비스, CrewAI 멀티에이전트 챗봇, AWS 인프라 배포, CI/CD 자동화 등 다양한 기술을 직접
-                  구현하며 실무 중심의 개발 역량을 키워왔습니다. 단순히 작동하는 기능을 넘어서, 유지보수성과 확장성까지
-                  고려한 설계를 지향하고 있으며, 협업과 문서화, 커뮤니케이션에도 진심을 다하는 개발자가 되기 위해
-                  끊임없이 노력하고 있습니다.
+                  Spring Boot 기반 웹 서비스 Kickytime 프로젝트에서 멀티 AZ VPC–ALB–ECS/EC2–RDS 3티어 아키텍처를 설계하고, 
+                  S3·CloudFront·Route 53, Cognito, GitHub Actions→ECR→ECS/EC2로 
+                  이어지는 CI/CD를 구축해 운영 안정성과 배포 효율을 확보했습니다. 
+                  AInfo에서는 Django 기반 백엔드와 RAG·멀티에이전트 등 AI 응용을 개발하며 데이터부터 서비스까지 
+                  흐름을 끝까지 연결했습니다. 
+                  기능이 ‘돌아가는 것’을 넘어 보안·가용성·관측·확장성을 함께 고려하고, 
+                  문서화와 협업 규범으로 팀의 생산성을 높이는 개발자를 지향합니다.
                 </p>
               </div>
             </div>
