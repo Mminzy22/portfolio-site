@@ -74,7 +74,7 @@ const project: Project = {
   troubleshooting: [
     {
       id: 1,
-      category: "DevOps",
+      category: "DEV",
       title: ".gitignore의 *.jar 규칙으로 gradle-wrapper.jar 미추적 → pre-commit/commit-msg 실패",
       content: `
       ### 배경
