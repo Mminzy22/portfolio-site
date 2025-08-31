@@ -4,7 +4,7 @@ const project: Project = {
   id: 3,
   slug: "kickytime",
   title: "Kickytime",
-  description: "풋살 매칭 플랫폼 - Spring Boot + React + AWS 클라우드 인프라",
+  description: "풋살 매칭 플랫폼",
   longDescription: "풋살 매칭 서비스로, Spring Boot 기반 백엔드와 React 프론트엔드를 AWS 클라우드 환경에 배포했습니다. 멀티 AZ VPC-ALB-ECS/EC2-RDS 3티어 아키텍처를 설계하고, AWS Cognito로 인증을 처리하며, GitHub Actions→ECR→ECS/EC2로 이어지는 CI/CD 파이프라인을 구축했습니다. 프론트엔드는 S3+CloudFront로 정적 호스팅하고, 백엔드는 ECS Fargate와 EC2를 혼용하여 운영합니다.",
   technologies: [
     "Java",

@@ -3,6 +3,7 @@ import { Github, Mail, Globe } from "lucide-react"
 import ProjectCard from "@/components/project-card"
 import SkillBadge from "@/components/skill-badge"
 import { Button } from "@/components/ui/button"
+import CollaborationSection from "@/components/collaboration-section"
 import { getProjectsForHomepage } from "@/data/projects"
 
 export default function Home() {
@@ -27,7 +28,7 @@ export default function Home() {
     { name: "Redis", category: "Database", link: "https://mminzy22.github.io/tags/redis/" },
     { name: "MySQL", category: "Database", link: "https://mminzy22.github.io/tags/mysql/" },
     { name: "OracleDB", category: "Database" },
-    { name: "Docker", category: "DevOps", link: "https://www.docker.com/" },
+    { name: "Docker", category: "DevOps", link: "https://mminzy22.github.io/tags/docker/" },
     { name: "GitHub Actions", category: "DevOps", link: "https://mminzy22.github.io/tags/github-actions/" },
     { name: "Nginx", category: "DevOps" },
     { name: "AWS EC2", category: "Cloud", link: "https://mminzy22.github.io/tags/ec2/" },
@@ -132,8 +133,11 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Collaboration Section */}
+      <CollaborationSection />
+
       {/* Skills Section */}
-      <section className="w-full py-12 md:py-24 lg:py-32" id="skills">
+      <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-100 dark:bg-gray-800" id="skills">
         <div className="container px-4 md:px-6 mx-auto">
           <div className="flex flex-col items-center space-y-4 text-center">
             <div className="space-y-2">
@@ -152,7 +156,7 @@ export default function Home() {
                     {skills
                       .filter((skill) => skill.category === category)
                       .map((skill) => (
-                        <SkillBadge key={skill.name} name={skill.name} link={skill.link} />
+                        <SkillBadge key={skill.name} name={skill.name} category={skill.category} link={skill.link} />
                       ))}
                   </div>
                 </div>
@@ -163,7 +167,7 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-100 dark:bg-gray-800" id="contact">
+      <section className="w-full py-12 md:py-24 lg:py-32" id="contact">
         <div className="container px-4 md:px-6 mx-auto">
           <div className="flex flex-col items-center space-y-4 text-center">
             <div className="space-y-2">
@@ -179,13 +183,13 @@ export default function Home() {
               </div>
               <div className="flex justify-center space-x-4">
                 <Link href="https://github.com/Mminzy22" target="_blank" rel="noopener noreferrer">
-                  <Button variant="outline" className="rounded-full">
+                  <Button variant="outline" className="rounded-full bg-transparent">
                     <Github className="h-5 w-5 mr-2" />
                     GitHub
                   </Button>
                 </Link>
                 <Link href="https://mminzy22.github.io/" target="_blank" rel="noopener noreferrer">
-                  <Button variant="outline" className="rounded-full">
+                  <Button variant="outline" className="rounded-full bg-transparent">
                     <Globe className="h-5 w-5 mr-2" />
                     Blog
                   </Button>

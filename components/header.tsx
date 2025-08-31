@@ -71,6 +71,7 @@ export default function Header() {
     { name: "홈", href: "/" },
     { name: "소개", href: "/#about" },
     { name: "프로젝트", href: "/#projects" },
+    { name: "협업", href: "/#collaboration" },
     { name: "기술 스택", href: "/#skills" },
     { name: "연락처", href: "/#contact" },
   ]
