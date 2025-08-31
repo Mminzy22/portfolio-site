@@ -22,8 +22,6 @@ export interface Project {
   features:
     | string[]
     | {
-        user: string[]
-        chatbot: string[]
         [key: string]: string[] // 다른 카테고리도 추가 가능
       }
   image: string

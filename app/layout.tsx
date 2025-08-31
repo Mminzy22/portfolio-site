@@ -7,8 +7,8 @@ import Header from "@/components/header"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata = {
-  title: "포트폴리오 | 백엔드 & AI 엔지니어",
-  description: "백엔드 개발자 및 AI 엔지니어 포트폴리오",
+  title: "포트폴리오 | Backend · DevOps/Infra · AI",
+  description: "Backend · DevOps/Infra · AI 포트폴리오",
     generator: 'v0.dev'
 }
 

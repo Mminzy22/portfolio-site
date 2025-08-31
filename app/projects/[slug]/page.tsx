@@ -30,9 +30,9 @@ function extractBlogLink(feature: string): { text: string; blogUrl: string | nul
   }
 }
 
-export default async function Project({ params }: { params: { slug: string } }) {
+export default async function Project({ params }: { params: Promise<{ slug: string }> }) {
   // Next.js 15.2.4에서는 params를 사용하기 전에 await 해야 합니다
-  const slug = await params.slug
+  const { slug } = await params
   const project = getProjectBySlug(slug)
 
   if (!project) {

@@ -1,10 +1,12 @@
 import type { Project } from "@/types/project"
 import aiNlpSystem from "./ainfo"
 import technicalInterview from "./technical-interview"
+import kickytime from "./kickytime"
 // movimoa import 제거됨
 
 // 모든 프로젝트 데이터를 배열로 내보냅니다
 export const projects: Project[] = [
+  kickytime,
   aiNlpSystem,
   technicalInterview,
   // 새 프로젝트를 추가할 때마다 여기에 추가

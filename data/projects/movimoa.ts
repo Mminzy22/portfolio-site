@@ -1,7 +1,7 @@
 import type { Project } from "@/types/project"
 
 const project: Project = {
-  id: 3,
+  id: 4,
   slug: "movimoa",
   title: "영화 커뮤니티 웹사이트",
   description: "영화 정보 확인 및 감상평 공유가 가능한 커뮤니티 웹사이트",
@@ -16,11 +16,11 @@ const project: Project = {
     "관리자 기능을 통해 영화 정보 및 사용자 관리",
     "MyBatis를 활용한 데이터베이스 연동 및 쿼리 최적화",
   ],
-  image: "/placeholder.svg?height=300&width=500",
+  image: "/placeholder.svg",
   gallery: [
-    "/placeholder.svg?height=400&width=600",
-    "/placeholder.svg?height=400&width=600",
-    "/placeholder.svg?height=400&width=600",
+    "/placeholder.svg",
+    "/placeholder.svg",
+    "/placeholder.svg",
   ],
   projectInfo: {
     type: "백엔드",

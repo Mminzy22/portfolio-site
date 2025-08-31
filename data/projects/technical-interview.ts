@@ -14,11 +14,11 @@ const project: Project = {
     "사용자별 채팅 세션을 생성하고 데이터베이스에 저장",
     "PostgreSQL을 활용하여 채팅 내역 조회 가능",
   ],
-  image: "/images/projects/project2/모의면접_챗봇.png?height=300&width=500",
+  image: "/images/projects/project2/technical_interview_chatbot.png",
   gallery: [
-    "/images/projects/project2/모의면접_로그인.png?height=400&width=600",
-    "/images/projects/project2/모의면접_채팅내역1.png?height=400&width=600",
-    "/images/projects/project2/모의면접_채팅내역2.png?height=400&width=600",
+    "/images/projects/project2/technical_interview_login.png",
+    "/images/projects/project2/technical_interview_chat1.png",
+    "/images/projects/project2/technical_interview_chat2.png",
   ],
   projectInfo: {
     type: "AI & 백엔드",
