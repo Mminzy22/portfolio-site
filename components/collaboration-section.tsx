@@ -3,7 +3,7 @@ export default function CollaborationSection() {
       branch: "https://github.com/next-engineer/next-kickytime-server/wiki/%EB%B8%8C%EB%9E%9C%EC%B9%98-%EC%A0%84%EB%9E%B5",
       commit: "https://github.com/next-engineer/next-kickytime-server/wiki/%EC%BB%A4%EB%B0%8B-%EB%A9%94%EC%8B%9C%EC%A7%80-%EA%B7%9C%EC%B9%99",
       quality: "https://github.com/next-engineer/next-kickytime-server/wiki/%EC%BD%94%EB%93%9C-%EC%8A%A4%ED%83%80%EC%9D%BC-%EC%9E%90%EB%8F%99%ED%99%94-%EC%84%A4%EC%A0%95",
-      process: "https://github.com/next-engineer/next-kickytime-server/wiki/%EB%B2%84%EC%A0%84-%EA%B4%80%EB%A6%AC-%EC%A0%84%EB%9E%B5",
+      process: "https://mminzy22.github.io/posts/Project19/",
     }
   
     return (
