@@ -39,7 +39,7 @@ export default function CollaborationSection() {
                   </h4>
                 </div>
                 <div className="space-y-3 text-sm text-gray-700 dark:text-gray-300">
-                  <p className="font-medium text-blue-800 dark:text-blue-200">GitLab Flow 기반 구조</p>
+                  <p className="font-medium text-blue-800 dark:text-blue-200">Git Flow 기반 구조</p>
                   <div className="space-y-2">
                     <div className="flex items-center">
                       <code className="bg-white dark:bg-gray-800 px-3 py-1 rounded-md text-xs font-mono border">
