@@ -52,7 +52,7 @@ const project: Project = {
   ],
   projectInfo: {
     type: "AI & 백엔드",
-    period: "2025.02 - 2025.04",
+    period: "2025.02 - 2025.03",
     role: "초기 회원관련 기능, 배포, CrewAI 멀티에이전트 시스템 설계 및 구현",
     githubUrl: "https://github.com/Mminzy22/AInfo-Backend",
     demoUrl: "https://www.youtube.com/watch?v=Y2IPx5YfEuc&ab_channel=ainfo",
