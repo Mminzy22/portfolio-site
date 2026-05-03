@@ -2,93 +2,410 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  :root {
+    /* shadcn tokens */
+    --background: 220 20% 97%;
+    --foreground: 222 35% 12%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 35% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 35% 12%;
+    --primary: 210 75% 52%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 218 22% 94%;
+    --secondary-foreground: 222 35% 12%;
+    --muted: 218 22% 94%;
+    --muted-foreground: 215 16% 40%;
+    --accent: 210 75% 52%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 218 22% 88%;
+    --input: 218 22% 88%;
+    --ring: 210 75% 52%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.75rem;
+    --sidebar-background: 220 20% 97%;
+    --sidebar-foreground: 215 16% 30%;
+    --sidebar-primary: 210 75% 52%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 218 22% 94%;
+    --sidebar-accent-foreground: 222 35% 12%;
+    --sidebar-border: 218 22% 88%;
+    --sidebar-ring: 210 75% 52%;
+
+    /* portfolio palette (reference) */
+    --pf-bg: #f6f7f9;
+    --pf-bg-2: #eceff4;
+    --pf-surface: rgba(15, 23, 42, 0.04);
+    --pf-surface-2: rgba(15, 23, 42, 0.07);
+    --pf-border: rgba(15, 23, 42, 0.10);
+    --pf-border-2: rgba(15, 23, 42, 0.18);
+    --pf-fg: #0b1220;
+    --pf-fg-dim: #475569;
+    --pf-fg-mute: #64748b;
+    --pf-accent: 210 75% 52%;
+    --pf-accent-soft: 210 75% 52% / 0.14;
+    --pf-grad: linear-gradient(135deg, hsl(210 75% 52%), hsl(265 65% 65%));
+    --pf-shadow-lg: 0 30px 80px -28px rgba(15, 23, 42, 0.18);
+    --pf-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+
+  .dark {
+    --background: 217 60% 7%;
+    --foreground: 213 31% 95%;
+    --card: 218 50% 10%;
+    --card-foreground: 213 31% 95%;
+    --popover: 218 50% 10%;
+    --popover-foreground: 213 31% 95%;
+    --primary: 210 80% 65%;
+    --primary-foreground: 217 60% 9%;
+    --secondary: 218 40% 14%;
+    --secondary-foreground: 213 31% 95%;
+    --muted: 218 40% 14%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 210 80% 65%;
+    --accent-foreground: 217 60% 9%;
+    --destructive: 0 62% 45%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 218 30% 22%;
+    --input: 218 30% 22%;
+    --ring: 210 80% 65%;
+    --sidebar-background: 217 60% 7%;
+    --sidebar-foreground: 213 31% 80%;
+    --sidebar-primary: 210 80% 65%;
+    --sidebar-primary-foreground: 217 60% 9%;
+    --sidebar-accent: 218 40% 14%;
+    --sidebar-accent-foreground: 213 31% 95%;
+    --sidebar-border: 218 30% 22%;
+    --sidebar-ring: 210 80% 65%;
+
+    --pf-bg: #07101f;
+    --pf-bg-2: #0b1628;
+    --pf-surface: rgba(255, 255, 255, 0.04);
+    --pf-surface-2: rgba(255, 255, 255, 0.07);
+    --pf-border: rgba(255, 255, 255, 0.10);
+    --pf-border-2: rgba(255, 255, 255, 0.18);
+    --pf-fg: #f1f5f9;
+    --pf-fg-dim: #94a3b8;
+    --pf-fg-mute: #64748b;
+    --pf-accent: 210 80% 65%;
+    --pf-accent-soft: 210 80% 65% / 0.18;
+    --pf-shadow-lg: 0 30px 80px -20px rgba(0, 0, 0, 0.55);
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-inter), "Inter", "Noto Sans KR", system-ui, sans-serif;
+    background: var(--pf-bg);
+    color: var(--pf-fg);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+    transition: background 400ms ease, color 400ms ease;
+  }
+
+  ::selection {
+    background: hsl(var(--pf-accent) / 0.25);
+    color: var(--pf-fg);
+  }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+
+  .font-mono-ui {
+    font-family: var(--pf-mono);
+  }
+
+  .pf-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 12px 6px 8px;
+    border-radius: 999px;
+    border: 1px solid var(--pf-border);
+    background: var(--pf-surface);
+    font-family: var(--pf-mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--pf-fg-dim);
+  }
+
+  .pf-eyebrow-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #22c55e;
+    box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.18);
+    animation: pf-pulse 2s ease-in-out infinite;
+  }
+
+  .pf-label {
+    font-family: var(--pf-mono);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: hsl(var(--pf-accent));
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .pf-label::before {
+    content: "";
+    width: 24px;
+    height: 1px;
+    background: currentColor;
+  }
+
+  .pf-section-title {
+    font-size: clamp(2rem, 4.4vw, 3.6rem);
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    font-weight: 700;
+  }
+
+  .pf-card {
+    border: 1px solid var(--pf-border);
+    border-radius: 18px;
+    background: var(--pf-surface);
+    transition: border-color 240ms ease, transform 240ms ease, box-shadow 240ms ease;
+  }
+
+  .pf-card:hover {
+    border-color: var(--pf-border-2);
+    transform: translateY(-3px);
+    box-shadow: var(--pf-shadow-lg);
+  }
+
+  .pf-tag {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--pf-mono);
+    font-size: 11px;
+    color: var(--pf-fg-dim);
+    border: 1px solid var(--pf-border);
+    border-radius: 999px;
+    padding: 4px 10px;
+    background: var(--pf-surface);
+    transition: color 200ms, border-color 200ms, background 200ms;
+  }
+
+  .pf-tag:hover {
+    color: var(--pf-fg);
+    border-color: var(--pf-border-2);
+    background: var(--pf-surface-2);
+  }
+
+  .pf-pill {
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--pf-border);
+    background: var(--pf-surface);
+    font-size: 13px;
+    color: var(--pf-fg-dim);
+    transition: all 200ms ease;
+  }
+
+  .pf-pill:hover {
+    color: var(--pf-fg);
+    border-color: var(--pf-border-2);
+  }
+
+  .pf-pill[data-active="true"] {
+    background: var(--pf-fg);
+    color: var(--pf-bg);
+    border-color: var(--pf-fg);
+  }
+
+  .pf-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 500;
+    border: 1px solid var(--pf-border);
+    background: var(--pf-surface);
+    color: var(--pf-fg);
+    transition: transform 200ms, background 200ms, border-color 200ms, box-shadow 200ms;
+  }
+
+  .pf-btn:hover {
+    background: var(--pf-surface-2);
+    border-color: var(--pf-border-2);
+  }
+
+  .pf-btn-primary {
+    background: var(--pf-fg);
+    color: var(--pf-bg);
+    border-color: var(--pf-fg);
+  }
+
+  .pf-btn-primary:hover {
+    background: var(--pf-fg);
+    color: var(--pf-bg);
+    box-shadow: 0 14px 40px -12px hsl(var(--pf-accent) / 0.55);
+  }
+
+  .pf-icon-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--pf-border);
+    background: var(--pf-surface);
+    color: var(--pf-fg-dim);
+    transition: background 200ms, border-color 200ms, color 200ms, transform 200ms;
+  }
+
+  .pf-icon-btn:hover {
+    background: var(--pf-surface-2);
+    border-color: var(--pf-border-2);
+    color: var(--pf-fg);
+    transform: translateY(-1px);
+  }
+
+  .pf-brand-mark {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    background: var(--pf-grad);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 0 1px var(--pf-border-2),
+      0 8px 24px -8px hsl(var(--pf-accent) / 0.45);
+  }
+
+  .pf-brand-mark::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.6), transparent 40%),
+      linear-gradient(135deg, transparent 50%, rgba(0, 0, 0, 0.25));
+    mix-blend-mode: overlay;
+  }
+
+  .pf-hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background:
+      radial-gradient(900px 600px at 70% 30%, hsl(var(--pf-accent) / 0.18), transparent 60%),
+      radial-gradient(700px 500px at 20% 70%, hsl(265 65% 65% / 0.14), transparent 60%),
+      linear-gradient(180deg, var(--pf-bg) 0%, var(--pf-bg-2) 100%);
+  }
+
+  .pf-hero-grid {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    opacity: 0.5;
+    background-image:
+      linear-gradient(var(--pf-border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--pf-border) 1px, transparent 1px);
+    background-size: 64px 64px;
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 0%, transparent 70%);
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 0%, transparent 70%);
+  }
+
+  .pf-display {
+    font-size: clamp(48px, 8vw, 120px);
+    line-height: 0.96;
+    letter-spacing: -0.045em;
+    font-weight: 800;
+    background: linear-gradient(120deg, var(--pf-fg) 30%, hsl(var(--pf-accent)) 70%, var(--pf-fg));
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: pf-shimmer 6s linear infinite;
+  }
+
+  .pf-spotlight {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    background: radial-gradient(
+      460px circle at var(--pf-mx, 50%) var(--pf-my, 50%),
+      hsl(var(--pf-accent) / 0.22),
+      transparent 60%
+    );
+    mix-blend-mode: screen;
+  }
+
+  html:not(.dark) .pf-spotlight {
+    mix-blend-mode: multiply;
+    opacity: 0.45;
+    background: radial-gradient(
+      460px circle at var(--pf-mx, 50%) var(--pf-my, 50%),
+      hsl(var(--pf-accent) / 0.32),
+      transparent 60%
+    );
+  }
+
+  .pf-scrollbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 2px;
+    width: 0%;
+    background: var(--pf-grad);
+    z-index: 60;
+    box-shadow: 0 0 12px hsl(var(--pf-accent) / 0.55);
+    transition: width 80ms linear;
+  }
+
+  .pf-fade-mask {
+    mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+  }
 }
 
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 3.9%;
-    --primary: 221 47% 22%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 0 0% 96.1%;
-    --secondary-foreground: 0 0% 9%;
-    --muted: 0 0% 96.1%;
-    --muted-foreground: 0 0% 45.1%;
-    --accent: 0 0% 96.1%;
-    --accent-foreground: 0 0% 9%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 89.8%;
-    --input: 0 0% 89.8%;
-    --ring: 221 47% 22%;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
-    --radius: 0.5rem;
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-  .dark {
-    --background: 0 0% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 0 0% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 214 47% 78%;
-    --primary-foreground: 221 47% 12%;
-    --secondary: 0 0% 14.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
-    --accent: 0 0% 14.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
-    --ring: 214 47% 78%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+@keyframes pf-pulse {
+  50% {
+    box-shadow: 0 0 0 8px rgba(34, 197, 94, 0);
   }
 }
 
-@layer base {
-  * {
-    @apply border-border;
+@keyframes pf-shimmer {
+  to {
+    background-position: 200% center;
   }
-  body {
-    @apply bg-background text-foreground;
+}
+
+@keyframes pf-marq {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
   }
 }

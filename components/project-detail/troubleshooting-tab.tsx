@@ -42,11 +42,11 @@ export default function TroubleshootingTab({ items }: TroubleshootingTabProps) {
             </AccordionTrigger>
             <AccordionContent className="px-4 pb-6 pt-2">
               <div className="bg-white dark:bg-slate-900 rounded-lg p-4">
-                <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-2 mb-4">
-                  <h3 className="text-xl font-bold">{item.title}</h3>
-                  <div className="text-sm text-slate-500">
-                    <div>발견: {item.discoveryDate}</div>
-                    <div>해결: {item.resolutionDate}</div>
+                <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2 mb-4">
+                  <h3 className="text-xl font-bold break-words md:flex-1 md:min-w-0">{item.title}</h3>
+                  <div className="text-sm text-slate-500 md:shrink-0 md:text-right">
+                    <div className="whitespace-nowrap">발견: {item.discoveryDate}</div>
+                    <div className="whitespace-nowrap">해결: {item.resolutionDate}</div>
                   </div>
                 </div>
 
