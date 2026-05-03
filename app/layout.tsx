@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata = {
   title: "포트폴리오 | Backend · DevOps/Infra · AI",
   description: "Backend · DevOps/Infra · AI 포트폴리오",
-    generator: 'v0.dev'
+  generator: "v0.dev",
 }
 
 export default function RootLayout({
@@ -28,6 +28,3 @@ export default function RootLayout({
     </html>
   )
 }
-
-
-import './globals.css'

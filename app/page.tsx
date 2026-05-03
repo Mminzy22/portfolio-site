@@ -5,6 +5,7 @@ import SkillBadge from "@/components/skill-badge"
 import { Button } from "@/components/ui/button"
 import CollaborationSection from "@/components/collaboration-section"
 import { getProjectsForHomepage } from "@/data/projects"
+import { skillCategories, skills } from "@/data/skills"
 
 export default function Home() {
   const projects = getProjectsForHomepage()
@@ -13,42 +14,6 @@ export default function Home() {
     projects.length <= 2
       ? "grid grid-cols-1 md:grid-cols-2 gap-8 mt-12 max-w-4xl mx-auto"
       : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12 max-w-6xl mx-auto"
-
-  const skills = [
-    { name: "Python", category: "Language", link: "https://mminzy22.github.io/tags/python/" },
-    { name: "Java", category: "Language", link: "https://mminzy22.github.io/tags/java/" },
-    { name: "Django", category: "Backend", link: "https://mminzy22.github.io/tags/django/" },
-    { name: "Django Channels", category: "Backend", link: "https://mminzy22.github.io/tags/django-channels/" },
-    { name: "WebSocket", category: "Backend", link: "https://mminzy22.github.io/tags/websocket/" },
-    { name: "Celery", category: "Backend", link: "https://mminzy22.github.io/tags/celery/" },
-    { name: "Spring Boot", category: "Backend", link: "https://mminzy22.github.io/tags/springboot/" },
-    { name: "LangChain", category: "AI/ML", link: "https://mminzy22.github.io/tags/langchain/" },
-    { name: "CrewAI", category: "AI/ML", link: "https://mminzy22.github.io/tags/crewai/" },
-    { name: "PostgreSQL", category: "Database" },
-    { name: "Redis", category: "Database", link: "https://mminzy22.github.io/tags/redis/" },
-    { name: "MySQL", category: "Database", link: "https://mminzy22.github.io/tags/mysql/" },
-    { name: "OracleDB", category: "Database" },
-    { name: "Docker", category: "DevOps", link: "https://mminzy22.github.io/tags/docker/" },
-    { name: "GitHub Actions", category: "DevOps", link: "https://mminzy22.github.io/tags/github-actions/" },
-    { name: "Nginx", category: "DevOps" },
-    { name: "AWS EC2", category: "Cloud", link: "https://mminzy22.github.io/tags/ec2/" },
-    { name: "AWS S3", category: "Cloud", link: "https://mminzy22.github.io/tags/s3/" },
-    { name: "AWS RDS", category: "Cloud", link: "https://mminzy22.github.io/tags/rds/" },
-    { name: "AWS CloudFront", category: "Cloud", link: "https://mminzy22.github.io/tags/cloudfront/" },
-    { name: "AWS Route 53", category: "Cloud" },
-    { name: "AWS ECS", category: "Cloud", link: "https://mminzy22.github.io/tags/ecs/" },
-    { name: "AWS ECR", category: "Cloud", link: "https://mminzy22.github.io/tags/ecr/" },
-    { name: "AWS IAM", category: "Cloud", link: "https://mminzy22.github.io/tags/iam/" },
-    { name: "AWS KMS", category: "Cloud", link: "https://mminzy22.github.io/tags/kms/" },
-    { name: "AWS VPC", category: "Cloud", link: "https://mminzy22.github.io/tags/vpc/" },
-    { name: "AWS SSM", category: "Cloud", link: "https://mminzy22.github.io/tags/ssm/" },
-    { name: "Git", category: "Tools" },
-    { name: "VSCode", category: "Tools" },
-    { name: "Postman", category: "Tools" },
-    { name: "Notion", category: "Tools" },
-    { name: "Discord", category: "Tools" },
-    { name: "Slack", category: "Tools" },
-  ]
 
   return (
     <main className="min-h-screen bg-gray-50 dark:bg-gray-900">
@@ -149,7 +114,7 @@ export default function Home() {
           </div>
           <div className="mt-12">
             <div className="space-y-8">
-              {["Language", "Backend", "AI/ML", "Database", "DevOps", "Cloud", "Tools"].map((category) => (
+              {skillCategories.map((category) => (
                 <div key={category} className="space-y-4">
                   <h3 className="text-xl font-semibold dark:text-white">{category}</h3>
                   <div className="flex flex-wrap gap-2">

@@ -2,23 +2,16 @@ import Link from "next/link"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import ProjectImage from "@/components/project-image"
-
-interface Project {
-  id: number
-  title: string
-  description: string
-  technologies: string[]
-  image: string
-  link: string
-}
+import { surfaceStyles } from "@/lib/design-system"
+import type { ProjectSummary } from "@/types/project"
 
 interface ProjectCardProps {
-  project: Project
+  project: ProjectSummary
 }
 
 export default function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <Card className="overflow-hidden transition-all hover:shadow-lg dark:bg-gray-850 h-full flex flex-col">
+    <Card className={`overflow-hidden h-full flex flex-col ${surfaceStyles.card}`}>
       <div className="relative h-48 w-full">
         <ProjectImage src={project.image || "/placeholder.svg?height=300&width=500"} alt={project.title} />
       </div>
@@ -26,13 +19,13 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         <CardTitle>{project.title}</CardTitle>
       </CardHeader>
       <CardContent className="flex-grow">
-        <p className="text-gray-500 dark:text-gray-400 mb-4">{project.description}</p>
+        <p className="text-slate-500 dark:text-slate-400 mb-4">{project.description}</p>
         <div className="flex flex-wrap gap-2">
           {project.technologies.map((tech) => (
             <Badge
               key={tech}
               variant="secondary"
-              className="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200"
+              className={surfaceStyles.mutedBadge}
             >
               {tech}
             </Badge>
@@ -40,10 +33,11 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         </div>
       </CardContent>
       <CardFooter>
-        <Link href={project.link} className="w-full">
-          <button className="w-full py-2 bg-gray-800 hover:bg-gray-700 text-white rounded-md transition-colors">
-            자세히 보기
-          </button>
+        <Link
+          href={project.link}
+          className="w-full py-2 bg-primary hover:bg-primary/90 text-primary-foreground rounded-md transition-colors text-center"
+        >
+          자세히 보기
         </Link>
       </CardFooter>
     </Card>

@@ -1,4 +1,4 @@
-import type { Project } from "@/types/project"
+import type { Project, ProjectSummary } from "@/types/project"
 import aiNlpSystem from "./ainfo"
 import technicalInterview from "./technical-interview"
 import kickytime from "./kickytime"
@@ -29,7 +29,7 @@ export function getProjectById(id: number): Project | undefined {
 }
 
 // 메인 페이지용 프로젝트 요약 정보 가져오기
-export function getProjectsForHomepage() {
+export function getProjectsForHomepage(): ProjectSummary[] {
   return projects.map(({ id, title, description, technologies, image, slug }) => ({
     id,
     title,

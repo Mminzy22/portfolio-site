@@ -39,10 +39,9 @@ export default function MarkdownContent({ content }: MarkdownContentProps) {
       `}</style>
       <ReactMarkdown
         components={{
-          // 코드 블록 처리
-          code({ node, inline, className, children, ...props }) {
+          code({ node, className, children, ...props }) {
             const match = /language-(\w+)/.exec(className || "")
-            return !inline && match ? (
+            return match ? (
               <SyntaxHighlighter
                 style={vscDarkPlus}
                 language={match[1]}
@@ -65,7 +64,6 @@ export default function MarkdownContent({ content }: MarkdownContentProps) {
               </code>
             )
           },
-          // 이미지 처리 - 인라인 요소로 변경
           img({ node, ...props }) {
             return (
               <span className="block my-4">
@@ -73,14 +71,13 @@ export default function MarkdownContent({ content }: MarkdownContentProps) {
                   src={props.src || "/placeholder.svg?height=400&width=600"}
                   alt={props.alt || ""}
                   width={800}
-                  height={0}
+                  height={450}
                   style={{ width: "100%", height: "auto" }}
                   className="rounded-lg"
                 />
               </span>
             )
           },
-          // 비디오 처리
           video({ node, ...props }) {
             return (
               <video controls className="w-full rounded-lg my-4" poster={props.poster} src={props.src}>
@@ -88,16 +85,12 @@ export default function MarkdownContent({ content }: MarkdownContentProps) {
               </video>
             )
           },
-          // 헤딩 처리
           h1: ({ children }) => <h1 className="text-2xl font-bold mt-6 mb-4">{children}</h1>,
           h2: ({ children }) => <h2 className="text-xl font-bold mt-5 mb-3">{children}</h2>,
           h3: ({ children }) => <h3 className="text-lg font-bold mt-4 mb-2">{children}</h3>,
-          // 단락 처리
           p: ({ children }) => <p className="my-3 text-gray-700 dark:text-gray-300 leading-relaxed">{children}</p>,
-          // 리스트 처리
           ul: ({ children }) => <ul className="list-disc pl-5 my-3">{children}</ul>,
           ol: ({ children }) => <ol className="list-decimal pl-5 my-3">{children}</ol>,
-          // 강조 처리
           strong: ({ children }) => <strong className="font-bold">{children}</strong>,
           em: ({ children }) => <em className="italic">{children}</em>,
         }}

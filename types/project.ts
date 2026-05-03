@@ -36,3 +36,7 @@ export interface Project {
   }
   troubleshooting?: TroubleshootingItem[]
 }
+
+export type ProjectSummary = Pick<Project, "id" | "title" | "description" | "technologies" | "image"> & {
+  link: string
+}
