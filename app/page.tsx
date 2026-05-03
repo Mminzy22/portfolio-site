@@ -88,7 +88,7 @@ export default function Home() {
             <h2 className="pf-section-title text-[var(--pf-fg)]">소개</h2>
           </div>
           <p className="max-w-[72ch] text-[17px] leading-relaxed text-[var(--pf-fg-dim)]">
-            문서화와 협업으로 팀 생산성을 끌어올리는, 운영까지 책임지는 백엔드 엔지니어.
+            문서화와 협업으로 팀 생산성을 끌어올리는, 백엔드부터 클라우드 운영, AI 서비스까지 연결하는 개발자.
           </p>
         </div>
 
