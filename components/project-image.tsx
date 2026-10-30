@@ -7,9 +7,10 @@ interface ProjectImageProps {
   src: string
   alt: string
   fill?: boolean
+  fit?: "cover" | "contain"
 }
 
-export default function ProjectImage({ src, alt, fill = true }: ProjectImageProps) {
+export default function ProjectImage({ src, alt, fill = true, fit = "cover" }: ProjectImageProps) {
   const [imgSrc, setImgSrc] = useState(src)
   const [isError, setIsError] = useState(false)
 
@@ -26,7 +27,7 @@ export default function ProjectImage({ src, alt, fill = true }: ProjectImageProp
         src={imgSrc || "/placeholder.svg?height=400&width=600"}
         alt={alt}
         fill
-        className="object-cover"
+        className={fit === "contain" ? "object-contain" : "object-cover"}
         onError={handleError}
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         priority={src.includes("project1") || src.includes("project2")}

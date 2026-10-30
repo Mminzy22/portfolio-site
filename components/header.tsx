@@ -55,6 +55,19 @@ export default function Header() {
 
   useEffect(() => setIsMenuOpen(false), [pathname])
 
+  // 메뉴가 열려 있는 동안 뒤 페이지 스크롤 막기, ESC로 닫기
+  useEffect(() => {
+    if (!isMenuOpen) return
+    const prev = document.body.style.overflow
+    document.body.style.overflow = "hidden"
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setIsMenuOpen(false)
+    window.addEventListener("keydown", onKey)
+    return () => {
+      document.body.style.overflow = prev
+      window.removeEventListener("keydown", onKey)
+    }
+  }, [isMenuOpen])
+
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault()
     if (isMenuOpen) setIsMenuOpen(false)
@@ -73,6 +86,7 @@ export default function Header() {
   }
 
   return (
+    <>
     <header
       className={`sticky top-0 z-50 w-full backdrop-blur-md transition-colors duration-300 ${
         isScrolled
@@ -100,7 +114,7 @@ export default function Header() {
                 key={item.name}
                 href={item.href}
                 onClick={(e) => handleNavClick(e, item.href)}
-                className={`relative rounded-full px-3 py-2 text-[13px] transition-colors ${
+                className={`relative rounded-[var(--pf-r-sm)] px-3 py-2 text-[13px] transition-colors ${
                   isActive
                     ? "text-[var(--pf-fg)]"
                     : "text-[var(--pf-fg-dim)] hover:text-[var(--pf-fg)]"
@@ -109,7 +123,7 @@ export default function Header() {
                 {isActive && (
                   <span
                     aria-hidden
-                    className="absolute inset-0 -z-10 rounded-full border border-[var(--pf-border)] bg-[var(--pf-surface-2)]"
+                    className="absolute inset-0 -z-10 rounded-[var(--pf-r-sm)] border border-[var(--pf-border)] bg-[var(--pf-surface-2)]"
                   />
                 )}
                 {item.name}
@@ -130,9 +144,11 @@ export default function Header() {
           </button>
         </div>
       </div>
+    </header>
 
+      {/* 헤더의 backdrop-filter가 fixed 기준 박스를 헤더로 바꾸므로, 메뉴는 헤더 밖에 둡니다 */}
       {isMenuOpen && (
-        <div className="fixed inset-0 z-50 bg-[var(--pf-bg)] md:hidden">
+        <div className="fixed inset-0 z-[60] overflow-y-auto bg-[var(--pf-bg)] md:hidden" role="dialog" aria-modal="true">
           <div className="mx-auto max-w-[1240px] px-5 py-4">
             <div className="flex items-center justify-between">
               <Link
@@ -158,7 +174,7 @@ export default function Header() {
                   key={item.name}
                   href={item.href}
                   onClick={(e) => handleNavClick(e, item.href)}
-                  className="rounded-xl border border-[var(--pf-border)] bg-[var(--pf-surface)] px-4 py-3 text-base text-[var(--pf-fg)]"
+                  className="rounded-[var(--pf-r-md)] border border-[var(--pf-border)] bg-[var(--pf-surface)] px-4 py-3 text-base text-[var(--pf-fg)]"
                 >
                   {item.name}
                 </Link>
@@ -167,7 +183,7 @@ export default function Header() {
                 href="https://mminzy22.github.io/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-xl border border-[var(--pf-border)] bg-[var(--pf-surface)] px-4 py-3 text-base text-[var(--pf-fg)]"
+                className="rounded-[var(--pf-r-md)] border border-[var(--pf-border)] bg-[var(--pf-surface)] px-4 py-3 text-base text-[var(--pf-fg)]"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Blog
@@ -176,6 +192,6 @@ export default function Header() {
           </div>
         </div>
       )}
-    </header>
+    </>
   )
 }

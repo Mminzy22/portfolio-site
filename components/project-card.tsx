@@ -15,9 +15,9 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
   return (
     <Link
       href={project.link}
-      className="group relative flex flex-col overflow-hidden rounded-[20px] border border-[var(--pf-border)] bg-[var(--pf-surface)] transition-all duration-500 hover:-translate-y-1 hover:border-[var(--pf-border-2)] hover:shadow-[var(--pf-shadow-lg)]"
+      className="pf-glow group relative flex w-full flex-col overflow-hidden rounded-[var(--pf-r-lg)] border border-[var(--pf-border)] bg-[var(--pf-surface)] transition-all duration-500 hover:-translate-y-1 hover:border-[var(--pf-border-2)] hover:shadow-[var(--pf-shadow-lg)]"
     >
-      <div className="relative aspect-[16/10] overflow-hidden">
+      <div className="relative aspect-[16/10] overflow-hidden [&_img]:transition-transform [&_img]:duration-700 [&_img]:ease-out group-hover:[&_img]:scale-[1.05]">
         <div
           aria-hidden
           className="absolute inset-0"

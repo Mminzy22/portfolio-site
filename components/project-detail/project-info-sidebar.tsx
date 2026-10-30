@@ -18,7 +18,7 @@ export default function ProjectInfoSidebar({ project }: ProjectInfoSidebarProps)
   }
 
   return (
-    <aside className="sticky top-24 space-y-8 rounded-[18px] border border-[var(--pf-border)] bg-[var(--pf-surface)] p-6">
+    <aside className="sticky top-24 space-y-8 rounded-[var(--pf-r-lg)] border border-[var(--pf-border)] bg-[var(--pf-surface)] p-6">
       <div>
         <h3 className={`mb-5 text-xl ${textStyles.heading}`}>프로젝트 정보</h3>
         <dl className="space-y-4">

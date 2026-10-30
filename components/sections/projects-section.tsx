@@ -1,3 +1,4 @@
+import type React from "react"
 import ProjectCard from "@/components/project-card"
 import { Section, SectionHeader } from "@/components/section"
 import { getProjectsForHomepage } from "@/data/projects"
@@ -19,7 +20,9 @@ export default function ProjectsSection() {
 
       <div className={gridClass}>
         {projects.map((project, i) => (
-          <ProjectCard key={project.id} project={project} index={i} />
+          <div key={project.id} data-reveal style={{ "--d": `${i * 110}ms` } as React.CSSProperties} className="flex">
+            <ProjectCard project={project} index={i} />
+          </div>
         ))}
       </div>
     </Section>

@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { ArrowUpRight, Github, Globe } from "lucide-react"
 import NetworkField from "@/components/network-field"
+import ScrambleText from "@/components/scramble-text"
 import { links, profile } from "@/data/profile"
 
 export default function HeroSection() {
@@ -14,7 +15,7 @@ export default function HeroSection() {
         <div className="pointer-events-none flex flex-col gap-8">
           <span className="pf-eyebrow pointer-events-auto self-start">
             <span className="pf-eyebrow-dot" />
-            {profile.role}
+            <ScrambleText text={profile.role} />
           </span>
 
           <h1 className="pf-display pointer-events-auto m-0 max-w-[12ch]">{profile.name}</h1>

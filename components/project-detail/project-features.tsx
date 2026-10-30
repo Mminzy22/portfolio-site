@@ -2,6 +2,7 @@ import Link from "next/link"
 import { ExternalLink } from "lucide-react"
 import { extractBlogLink } from "@/lib/project-features"
 import { surfaceStyles, textStyles } from "@/lib/design-system"
+
 import type { Project } from "@/types/project"
 
 interface ProjectFeaturesProps {
@@ -15,8 +16,8 @@ function FeatureItem({ feature, index }: { feature: string; index: number }) {
     <div className={`p-4 ${surfaceStyles.card}`}>
       <div className="flex items-start space-x-4">
         <div className="flex-shrink-0 mt-1">
-          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[hsl(var(--pf-accent-soft))]">
-            <span className="font-mono-ui text-sm font-semibold text-[hsl(var(--pf-accent))]">{index + 1}</span>
+          <div className="flex h-7 w-7 items-center justify-center rounded-[var(--pf-r-sm)] bg-[hsl(var(--pf-accent-soft))]">
+            <span className="font-mono-ui text-xs font-semibold text-[hsl(var(--pf-accent))]">{String(index + 1).padStart(2, "0")}</span>
           </div>
         </div>
         <div className="flex-1">
@@ -57,14 +58,13 @@ export default function ProjectFeatures({ features }: ProjectFeaturesProps) {
   return (
     <div className="space-y-6">
       <h2 className={`mb-6 text-2xl ${textStyles.heading}`}>주요 기능</h2>
-      <div className="space-y-10">
-        {Object.entries(features).map(([category, featureList]) => (
-          <section
-            key={category}
-            className={`p-6 ${surfaceStyles.panel}`}
-          >
-            <h3 className={`mb-4 flex items-center text-xl ${textStyles.heading}`}>
-              <span className="mr-3 inline-block h-6 w-1.5 rounded-sm bg-[hsl(var(--pf-accent))]" />
+      <div>
+        {Object.entries(features).map(([category, featureList], i) => (
+          <section key={category} className={`py-8 ${i > 0 ? "border-t border-[var(--pf-border)]" : "pt-2"}`}>
+            <h3 className={`mb-4 flex items-baseline gap-3 text-xl ${textStyles.heading}`}>
+              <span className="font-mono-ui text-[11px] font-normal tracking-[0.16em] text-[hsl(var(--pf-accent))]">
+                {String(i + 1).padStart(2, "0")}
+              </span>
               {category.charAt(0).toUpperCase() + category.slice(1)}
             </h3>
             <div className="space-y-3 mt-4">

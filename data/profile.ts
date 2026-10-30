@@ -23,3 +23,8 @@ export const about = {
   codeReviewRate: 100,
   numbersNote: "단기 팀 프로젝트에서도 실무 수준의 협업 문화와 운영 품질을 유지했습니다.",
 }
+
+export const contact = {
+  headline: "함께 이야기해요",
+  message: "새로운 기회나 협업 제안, 프로젝트에 대한 질문 모두 환영합니다. 편하게 연락 주세요.",
+}

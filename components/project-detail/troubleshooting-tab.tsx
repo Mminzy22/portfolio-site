@@ -13,14 +13,14 @@ export default function TroubleshootingTab({ items }: TroubleshootingTabProps) {
     <div className="space-y-6">
       <h2 className={`mb-4 text-2xl ${textStyles.heading}`}>트러블슈팅</h2>
 
-      <div className="grid grid-cols-12 gap-4 py-3 px-4 rounded-t-[14px] border border-b-0 border-[var(--pf-border)] bg-[var(--pf-bg-2)] font-mono-ui text-xs uppercase tracking-[0.12em] text-[var(--pf-fg-mute)]">
+      <div className="grid grid-cols-12 gap-4 py-3 px-4 rounded-t-[var(--pf-r-lg)] border border-b-0 border-[var(--pf-border)] bg-[var(--pf-bg-2)] font-mono-ui text-xs uppercase tracking-[0.12em] text-[var(--pf-fg-mute)]">
         <div className="col-span-2 md:col-span-1 text-center">번호</div>
         <div className="col-span-3 md:col-span-1 text-center">분류</div>
         <div className="col-span-7 md:col-span-7">제목</div>
         <div className="hidden md:block md:col-span-3 text-right pr-10">발견 날짜</div>
       </div>
 
-      <Accordion type="single" collapsible className="w-full divide-y divide-[var(--pf-border)] rounded-b-[14px] border border-[var(--pf-border)]">
+      <Accordion type="single" collapsible className="w-full divide-y divide-[var(--pf-border)] rounded-b-[var(--pf-r-lg)] border border-[var(--pf-border)]">
         {items.map((item) => (
           <AccordionItem key={item.id} value={`item-${item.id}`} className="border-0">
             <AccordionTrigger className="py-4 px-4 w-full text-[var(--pf-fg)] hover:bg-[var(--pf-surface-2)] hover:no-underline">
@@ -38,7 +38,7 @@ export default function TroubleshootingTab({ items }: TroubleshootingTabProps) {
               </div>
             </AccordionTrigger>
             <AccordionContent className="px-4 pb-6 pt-2">
-              <div className="rounded-[14px] bg-[var(--pf-bg-2)] p-4">
+              <div className="rounded-[var(--pf-r-lg)] bg-[var(--pf-bg-2)] p-4">
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2 mb-4">
                   <h3 className={`break-words text-xl md:min-w-0 md:flex-1 ${textStyles.heading}`}>{item.title}</h3>
                   <div className={`text-sm md:shrink-0 md:text-right ${textStyles.mute}`}>

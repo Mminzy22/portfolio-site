@@ -1,3 +1,4 @@
+import type React from "react"
 import AnimatedCounter from "@/components/animated-counter"
 import { Section, SectionHeader } from "@/components/section"
 import {
@@ -18,12 +19,15 @@ export default function CollaborationSection() {
       />
 
       <div className="grid gap-4 md:grid-cols-2">
-        {collaborationCards.map((card) => (
-          <CollabCard key={card.title} card={card} />
+        {collaborationCards.map((card, i) => (
+          <div key={card.title} data-reveal style={{ "--d": `${(i % 2) * 110}ms` } as React.CSSProperties} className="flex">
+            <CollabCard card={card} />
+          </div>
         ))}
       </div>
 
-      <div className="pf-card mt-6 p-7">
+      <div data-reveal className="mt-6">
+      <div className="pf-card p-7">
         <h4 className="mb-5 font-mono-ui text-[11px] uppercase tracking-[0.2em] text-[var(--pf-fg-mute)]">
           협업 성과
         </h4>
@@ -41,6 +45,7 @@ export default function CollaborationSection() {
         </div>
         <p className="mt-5 text-center text-[13px] text-[var(--pf-fg-dim)]">{collaborationResultNote}</p>
       </div>
+      </div>
     </Section>
   )
 }
@@ -49,9 +54,9 @@ function CollabCard({ card }: { card: CollabCardData }) {
   const { icon: Icon, title, subtitle, href, note, blocks } = card
 
   return (
-    <a href={href} target="_blank" rel="noopener noreferrer" className="pf-card relative overflow-hidden p-6">
+    <a href={href} target="_blank" rel="noopener noreferrer" className="pf-card pf-glow relative w-full overflow-hidden p-6">
       <div
-        className="mb-3.5 grid h-10 w-10 place-items-center rounded-[10px] text-[hsl(var(--pf-accent))]"
+        className="mb-3.5 grid h-10 w-10 place-items-center rounded-[var(--pf-r-md)] text-[hsl(var(--pf-accent))]"
         style={{ background: "hsl(var(--pf-accent-soft))" }}
       >
         <Icon className="h-5 w-5" />

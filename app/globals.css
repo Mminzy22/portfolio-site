@@ -39,6 +39,11 @@
     --sidebar-border: 218 22% 88%;
     --sidebar-ring: 210 75% 52%;
 
+    /* 모서리 반경 토큰 */
+    --pf-r-lg: 10px;
+    --pf-r-md: 8px;
+    --pf-r-sm: 6px;
+
     /* portfolio palette (reference) */
     --pf-bg: #f6f7f9;
     --pf-bg-2: #eceff4;
@@ -138,7 +143,7 @@
     align-items: center;
     gap: 10px;
     padding: 6px 12px 6px 8px;
-    border-radius: 999px;
+    border-radius: var(--pf-r-sm);
     border: 1px solid var(--pf-border);
     background: var(--pf-surface);
     font-family: var(--pf-mono);
@@ -184,7 +189,7 @@
 
   .pf-card {
     border: 1px solid var(--pf-border);
-    border-radius: 18px;
+    border-radius: var(--pf-r-lg);
     background: var(--pf-surface);
     transition: border-color 240ms ease, transform 240ms ease, box-shadow 240ms ease;
   }
@@ -202,7 +207,7 @@
     font-size: 11px;
     color: var(--pf-fg-dim);
     border: 1px solid var(--pf-border);
-    border-radius: 999px;
+    border-radius: 4px;
     padding: 4px 10px;
     background: var(--pf-surface);
     transition: color 200ms, border-color 200ms, background 200ms;
@@ -216,7 +221,7 @@
 
   .pf-pill {
     padding: 8px 14px;
-    border-radius: 999px;
+    border-radius: var(--pf-r-sm);
     border: 1px solid var(--pf-border);
     background: var(--pf-surface);
     font-size: 13px;
@@ -240,7 +245,7 @@
     align-items: center;
     gap: 8px;
     padding: 12px 20px;
-    border-radius: 999px;
+    border-radius: var(--pf-r-md);
     font-size: 14px;
     font-weight: 500;
     border: 1px solid var(--pf-border);
@@ -269,7 +274,7 @@
   .pf-icon-btn {
     width: 36px;
     height: 36px;
-    border-radius: 10px;
+    border-radius: var(--pf-r-md);
     display: grid;
     place-items: center;
     border: 1px solid var(--pf-border);
@@ -430,5 +435,65 @@
   .custom-scrollbar {
     scrollbar-width: thin;
     scrollbar-color: rgba(128, 128, 128, 0.5) rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* 스크롤 등장 애니메이션 */
+@layer utilities {
+  .pf-js [data-reveal] {
+    opacity: 0;
+    transform: translateY(22px);
+    transition:
+      opacity 700ms ease,
+      transform 800ms cubic-bezier(0.2, 0.7, 0.2, 1);
+    transition-delay: var(--d, 0ms);
+  }
+  .pf-js [data-reveal].is-in {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* 커서를 따라 테두리가 빛나는 카드 */
+@layer components {
+  .pf-glow {
+    position: relative;
+    isolation: isolate;
+  }
+  .pf-glow::before,
+  .pf-glow::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 300ms ease;
+  }
+  .pf-glow::before {
+    z-index: 2;
+    padding: 1px;
+    background: radial-gradient(
+      240px circle at var(--gx, 50%) var(--gy, 50%),
+      hsl(var(--pf-accent) / 0.9),
+      transparent 65%
+    );
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+  .pf-glow::after {
+    z-index: -1;
+    background: radial-gradient(
+      420px circle at var(--gx, 50%) var(--gy, 50%),
+      hsl(var(--pf-accent) / 0.09),
+      transparent 60%
+    );
+  }
+  .pf-glow:hover::before,
+  .pf-glow:hover::after {
+    opacity: 1;
   }
 }

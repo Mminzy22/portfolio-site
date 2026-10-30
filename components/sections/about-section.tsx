@@ -1,3 +1,4 @@
+import type React from "react"
 import AnimatedCounter from "@/components/animated-counter"
 import { Section, SectionHeader } from "@/components/section"
 import { getAllProjects } from "@/data/projects"
@@ -10,12 +11,12 @@ export default function AboutSection() {
       <SectionHeader label="About" title="소개" description={about.summary} />
 
       <div className="grid gap-6 md:grid-cols-2">
-        <div className="pf-card p-7">
+        <div data-reveal className="pf-card p-7">
           <CardHeading>Mission</CardHeading>
           <p className="text-[15px] leading-relaxed text-[var(--pf-fg-dim)]">{about.mission}</p>
         </div>
 
-        <div className="pf-card p-7">
+        <div data-reveal style={{ "--d": "120ms" } as React.CSSProperties} className="pf-card p-7">
           <CardHeading>By the numbers</CardHeading>
           <div className="flex flex-wrap gap-7">
             <Stat value={getAllProjects().length} label="Projects" />

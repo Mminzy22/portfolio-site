@@ -25,7 +25,7 @@ interface SectionHeaderProps {
 // 라벨 + 제목 + 설명으로 이루어진 섹션 헤더
 export function SectionHeader({ label, title, description }: SectionHeaderProps) {
   return (
-    <div className="mb-14 grid items-end gap-12 md:grid-cols-[0.7fr_1.3fr]">
+    <div data-reveal className="mb-14 grid items-end gap-12 md:grid-cols-[0.7fr_1.3fr]">
       <div>
         <div className="pf-label mb-3">{label}</div>
         <h2 className="pf-section-title text-[var(--pf-fg)]">{title}</h2>
