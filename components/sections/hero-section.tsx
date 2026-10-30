@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { ArrowUpRight, Github, Globe } from "lucide-react"
-import ParticleField from "@/components/particle-field"
+import NetworkField from "@/components/network-field"
 import { links, profile } from "@/data/profile"
 
 export default function HeroSection() {
@@ -8,7 +8,7 @@ export default function HeroSection() {
     <section className="relative isolate flex min-h-[calc(100vh-64px)] items-center overflow-hidden">
       <div className="pf-hero-bg" aria-hidden />
       <div className="pf-hero-grid" aria-hidden />
-      <ParticleField className="absolute left-1/2 top-1/2 z-[1] h-[min(680px,60vw)] w-[min(680px,60vw)] -translate-x-1/2 -translate-y-1/2 rounded-full max-md:opacity-60" />
+      <NetworkField className="absolute inset-0 z-[1] max-md:opacity-50 md:[mask-image:linear-gradient(90deg,rgba(0,0,0,0.35)_0%,#000_55%)]" />
 
       <div className="relative z-[2] mx-auto flex w-full max-w-[1240px] flex-col gap-12 px-5 pb-20 pt-24 md:px-7">
         <div className="pointer-events-none flex flex-col gap-8">
