@@ -473,11 +473,15 @@
   .pf-glow::before {
     z-index: 2;
     padding: 1px;
-    background: radial-gradient(
-      240px circle at var(--gx, 50%) var(--gy, 50%),
-      hsl(var(--pf-accent) / 0.9),
-      transparent 65%
-    );
+    /* 커서 근처는 밝게, 나머지 테두리도 은은하게 강조색으로 */
+    background:
+      radial-gradient(
+        520px circle at var(--gx, 50%) var(--gy, 50%),
+        hsl(var(--pf-accent) / 1),
+        hsl(var(--pf-accent) / 0.35) 45%,
+        transparent 75%
+      ),
+      linear-gradient(hsl(var(--pf-accent) / 0.22), hsl(var(--pf-accent) / 0.22));
     -webkit-mask:
       linear-gradient(#000 0 0) content-box,
       linear-gradient(#000 0 0);
