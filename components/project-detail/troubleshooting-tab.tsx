@@ -10,7 +10,7 @@ interface TroubleshootingTabProps {
 
 export default function TroubleshootingTab({ items }: TroubleshootingTabProps) {
   return (
-    <div className="space-y-6">
+    <div>
       <h2 className={`mb-4 text-2xl ${textStyles.heading}`}>트러블슈팅</h2>
 
       <div className="grid grid-cols-12 gap-4 py-3 px-4 rounded-t-[var(--pf-r-lg)] border border-b-0 border-[var(--pf-border)] bg-[var(--pf-bg-2)] font-mono-ui text-xs uppercase tracking-[0.12em] text-[var(--pf-fg-mute)]">
