@@ -25,6 +25,6 @@ export const about = {
 }
 
 export const contact = {
-  headline: "함께 이야기해요",
-  message: "새로운 기회나 협업 제안, 프로젝트에 대한 질문 모두 환영합니다. 편하게 연락 주세요.",
+  headline: "연락처",
+  message: "채용, 협업, 프로젝트 관련 문의는 메일로 연락 주세요.",
 }
