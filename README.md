@@ -16,6 +16,27 @@
 
 ---
 
+## 🚀 로컬 실행
+
+Node 버전은 `.nvmrc`로 고정되어 있습니다 (Node 26 LTS).
+
+```bash
+nvm use
+npm install
+npm run dev
+```
+
+## 🗂 폴더 구조
+
+- `app/` — 페이지 (메인, 프로젝트 상세)
+- `components/sections/` — 메인 페이지 섹션 (Hero, About, Projects, Collaboration, Skills, Contact, Footer)
+- `components/project-detail/` — 프로젝트 상세 페이지 구성 요소
+- `components/section.tsx` — 섹션 공통 래퍼 / 헤더
+- `data/` — 사이트 콘텐츠 (프로필, 프로젝트, 협업, 기술 스택)
+- `lib/design-system.ts` — `--pf-*` 디자인 토큰 기반 공통 클래스
+
+---
+
 ## 🛠 제작 히스토리
 
 ### v1 — v0.dev 기반 초기 버전

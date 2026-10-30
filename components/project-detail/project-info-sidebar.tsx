@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
+import { textStyles } from "@/lib/design-system"
 import type { Project } from "@/types/project"
 
 interface ProjectInfoSidebarProps {
@@ -7,48 +7,44 @@ interface ProjectInfoSidebarProps {
 }
 
 export default function ProjectInfoSidebar({ project }: ProjectInfoSidebarProps) {
+  const { type, period, role, demoUrl, githubUrl } = project.projectInfo
+  const rows: { label: string; value: string }[] = [
+    { label: "프로젝트 유형", value: type },
+    { label: "기간", value: period },
+    { label: "역할", value: role },
+  ]
+  if (project.troubleshooting) {
+    rows.push({ label: "트러블슈팅 항목", value: `${project.troubleshooting.length}개` })
+  }
+
   return (
-    <aside className="sticky top-24 space-y-8 bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm">
+    <aside className="sticky top-24 space-y-8 rounded-[18px] border border-[var(--pf-border)] bg-[var(--pf-surface)] p-6">
       <div>
-        <h3 className="text-xl font-semibold mb-4 dark:text-white">프로젝트 정보</h3>
+        <h3 className={`mb-5 text-xl ${textStyles.heading}`}>프로젝트 정보</h3>
         <dl className="space-y-4">
-          <div>
-            <dt className="text-sm font-medium text-gray-500 dark:text-gray-400">프로젝트 유형</dt>
-            <dd className="mt-1 text-sm text-gray-900 dark:text-gray-100">{project.projectInfo.type}</dd>
-          </div>
-          <div>
-            <dt className="text-sm font-medium text-gray-500 dark:text-gray-400">기간</dt>
-            <dd className="mt-1 text-sm text-gray-900 dark:text-gray-100">{project.projectInfo.period}</dd>
-          </div>
-          <div>
-            <dt className="text-sm font-medium text-gray-500 dark:text-gray-400">역할</dt>
-            <dd className="mt-1 text-sm text-gray-900 dark:text-gray-100">{project.projectInfo.role}</dd>
-          </div>
-          {project.troubleshooting && (
-            <div>
-              <dt className="text-sm font-medium text-gray-500 dark:text-gray-400">트러블슈팅 항목</dt>
-              <dd className="mt-1 text-sm text-gray-900 dark:text-gray-100">{project.troubleshooting.length}개</dd>
+          {rows.map((row) => (
+            <div key={row.label}>
+              <dt className={textStyles.monoLabel}>{row.label}</dt>
+              <dd className="mt-1 text-sm text-[var(--pf-fg)]">{row.value}</dd>
             </div>
-          )}
+          ))}
         </dl>
       </div>
 
-      <div className="space-y-4">
-        {project.projectInfo.demoUrl && (
-          <Button className="w-full" variant="default" asChild>
-            <Link href={project.projectInfo.demoUrl} target="_blank" rel="noopener noreferrer">
+      {(demoUrl || githubUrl) && (
+        <div className="flex flex-col gap-3">
+          {demoUrl && (
+            <Link href={demoUrl} target="_blank" rel="noopener noreferrer" className="pf-btn pf-btn-primary justify-center">
               데모 보기
             </Link>
-          </Button>
-        )}
-        {project.projectInfo.githubUrl && (
-          <Button className="w-full" variant="outline" asChild>
-            <Link href={project.projectInfo.githubUrl} target="_blank" rel="noopener noreferrer">
+          )}
+          {githubUrl && (
+            <Link href={githubUrl} target="_blank" rel="noopener noreferrer" className="pf-btn justify-center">
               GitHub 저장소
             </Link>
-          </Button>
-        )}
-      </div>
+          )}
+        </div>
+      )}
     </aside>
   )
 }

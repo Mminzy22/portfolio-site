@@ -1,11 +1,14 @@
+// --pf-* 디자인 토큰(app/globals.css)을 쓰는 공통 클래스 모음
 export const surfaceStyles = {
-  card:
-    "bg-white border border-slate-200 shadow-sm transition-colors hover:border-slate-400 dark:bg-slate-900 dark:border-slate-800 dark:hover:border-slate-500",
-  subtlePanel: "bg-slate-50 border border-slate-200 dark:bg-slate-900/60 dark:border-slate-800",
-  mutedBadge:
-    "bg-slate-100 text-slate-700 border-slate-200 transition-all hover:-translate-y-0.5 hover:bg-primary hover:text-primary-foreground hover:border-primary hover:shadow-sm dark:bg-slate-700 dark:text-slate-100 dark:border-slate-500 dark:hover:bg-primary dark:hover:text-primary-foreground dark:hover:border-primary",
-  accentBadge:
-    "bg-slate-100 text-primary border-slate-200 hover:bg-primary hover:text-primary-foreground hover:border-primary dark:bg-slate-800 dark:text-primary dark:border-slate-700 dark:hover:bg-primary dark:hover:text-primary-foreground dark:hover:border-primary",
-  iconBox: "bg-primary text-primary-foreground",
-  sectionText: "text-slate-500 dark:text-slate-400",
+  card: "rounded-[14px] border border-[var(--pf-border)] bg-[var(--pf-surface)] transition-colors hover:border-[var(--pf-border-2)]",
+  panel: "rounded-[18px] border border-[var(--pf-border)] bg-[var(--pf-bg-2)]",
+  accentLink:
+    "inline-flex items-center gap-1 whitespace-nowrap rounded-full border border-[hsl(var(--pf-accent)/0.4)] px-3 py-1 text-xs font-medium text-[hsl(var(--pf-accent))] transition-colors hover:bg-[hsl(var(--pf-accent-soft))]",
+}
+
+export const textStyles = {
+  heading: "font-bold tracking-tight text-[var(--pf-fg)]",
+  body: "text-[var(--pf-fg-dim)]",
+  mute: "text-[var(--pf-fg-mute)]",
+  monoLabel: "font-mono-ui text-[11px] uppercase tracking-[0.16em] text-[var(--pf-fg-mute)]",
 }

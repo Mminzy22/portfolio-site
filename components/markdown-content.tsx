@@ -10,33 +10,7 @@ interface MarkdownContentProps {
 
 export default function MarkdownContent({ content }: MarkdownContentProps) {
   return (
-    <div className="prose dark:prose-invert max-w-none">
-      <style jsx global>{`
-        .custom-scrollbar::-webkit-scrollbar {
-          width: 8px;
-          height: 8px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-track {
-          background: rgba(0, 0, 0, 0.1);
-          border-radius: 4px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-          background: rgba(128, 128, 128, 0.5);
-          border-radius: 4px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-          background: rgba(128, 128, 128, 0.7);
-        }
-        .custom-scrollbar {
-          scrollbar-width: thin;
-          scrollbar-color: rgba(128, 128, 128, 0.5) rgba(0, 0, 0, 0.1);
-        }
-        pre {
-          border-radius: 0.375rem;
-          overflow: auto;
-          margin: 0.5rem 0;
-        }
-      `}</style>
+    <div className="max-w-none text-[var(--pf-fg-dim)]">
       <ReactMarkdown
         components={{
           code({ node, className, children, ...props }) {
@@ -59,7 +33,7 @@ export default function MarkdownContent({ content }: MarkdownContentProps) {
                 {String(children).replace(/\n$/, "")}
               </SyntaxHighlighter>
             ) : (
-              <code className={`${className} bg-gray-100 dark:bg-gray-800 px-1 py-0.5 rounded`} {...props}>
+              <code className={`${className} rounded bg-[var(--pf-surface-2)] px-1 py-0.5 font-mono-ui text-[0.9em] text-[var(--pf-fg)]`} {...props}>
                 {children}
               </code>
             )
@@ -88,7 +62,7 @@ export default function MarkdownContent({ content }: MarkdownContentProps) {
           h1: ({ children }) => <h1 className="text-2xl font-bold mt-6 mb-4">{children}</h1>,
           h2: ({ children }) => <h2 className="text-xl font-bold mt-5 mb-3">{children}</h2>,
           h3: ({ children }) => <h3 className="text-lg font-bold mt-4 mb-2">{children}</h3>,
-          p: ({ children }) => <p className="my-3 text-gray-700 dark:text-gray-300 leading-relaxed">{children}</p>,
+          p: ({ children }) => <p className="my-3 leading-relaxed text-[var(--pf-fg-dim)]">{children}</p>,
           ul: ({ children }) => <ul className="list-disc pl-5 my-3">{children}</ul>,
           ol: ({ children }) => <ol className="list-decimal pl-5 my-3">{children}</ol>,
           strong: ({ children }) => <strong className="font-bold">{children}</strong>,

@@ -409,3 +409,26 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+/* 트러블슈팅 마크다운 코드 블록 스크롤바 */
+@layer components {
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(128, 128, 128, 0.5);
+    border-radius: 4px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(128, 128, 128, 0.7);
+  }
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(128, 128, 128, 0.5) rgba(0, 0, 0, 0.1);
+  }
+}
